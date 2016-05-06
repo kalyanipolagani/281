@@ -8,7 +8,7 @@
 var Client = require('node-rest-client').Client;
 var http = require('http') ;
 var count = "";
-var endpoint = "http://ec2-52-37-110-49.us-west-2.compute.amazonaws.com:8080/GrailsGumballMachineVer2-2.2/gumballs" ;
+var endpoint = "http://team1ELB-153492086.us-east-1.elb.amazonaws.com/catalog?gender=women" ;
 
 
 exports.women = function(req, res){
@@ -19,9 +19,14 @@ exports.women = function(req, res){
             	if(response_raw) {
   
             		//console.log(response_raw);
-            		console.log(data[0].countGumballs) ;
-                    console.log(data[0].modelNumber) ;
-                    console.log(data[0].serialNumber) ;
+            		console.log(data[0].item_code) ;
+                    console.log(data[0].type) ;
+                    console.log(data[0].gender) ;
+                    console.log(data[0].color) ;
+                    console.log(data[0].style) ;
+                    console.log(data[0].price) ;
+                    console.log(data[0].avail_count) ;
+                    
                     count = data[0].countGumballs
                     console.log( "count = " + count ) ;
                     //res.end( "count = " + count + "\n");
