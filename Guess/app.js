@@ -6,8 +6,7 @@ var express = require('express')
 , path = require('path');
 
 //URL for the sessions collections in mongoDB
-var dbURL = "mongodb://localhost:27017/db_bag";
-var mongo = require("./routes/mongo");
+
 var men = require("./routes/men");
 var women = require("./routes/women");
 var cart = require("./routes/cart");
@@ -65,10 +64,6 @@ app.post('/updatecart', cart.updateCart);
 app.post('/deletecart', cart.deleteCart);
 app.post('/checkSearch', cart.searchItem);
 
-//connect to the mongo collection session and then createServer
-mongo.connect(dbURL, function(){
-	console.log('Connected to mongo at: ' + dbURL);
 	http.createServer(app).listen(app.get('port'), function(){
 		console.log('Server listening on port ' + app.get('port'));
 	});  
-});
